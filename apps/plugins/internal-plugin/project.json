@@ -1,0 +1,110 @@
+{
+  "name": "internal-plugin",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/plugins/internal-plugin/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/apps/plugins/internal-plugin",
+        "index": "apps/plugins/internal-plugin/src/index.html",
+        "baseHref": "/",
+        "main": "apps/plugins/internal-plugin/src/main.ts",
+        "tsConfig": "apps/plugins/internal-plugin/tsconfig.app.json",
+        "assets": [
+          "apps/plugins/internal-plugin/src/favicon.ico",
+          "apps/plugins/internal-plugin/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/plugins/internal-plugin/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/plugins/internal-plugin/src/environments/environment.ts",
+              "with": "apps/plugins/internal-plugin/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/plugins/internal-plugin/webpack.config.prod.js"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "internal-plugin:build",
+        "hmr": true,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "internal-plugin:build:development"
+        },
+        "production": {
+          "buildTarget": "internal-plugin:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/plugins/internal-plugin/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/plugins/internal-plugin/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "internal-plugin:build",
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "internal-plugin:build:development"
+        },
+        "production": {
+          "buildTarget": "internal-plugin:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
