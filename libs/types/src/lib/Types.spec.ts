@@ -1,7 +1,7 @@
-import { types } from './Types';
+import API_TYPES from './types';
 
 describe('types', () => {
   it('should work', () => {
-    expect(types()).toEqual('types');
+    expect(API_TYPES).toBeTruthy();
   });
 });

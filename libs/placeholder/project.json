@@ -1,31 +1,31 @@
 {
-  "name": "api-plugin-api",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api/plugin-api/src",
+  "name": "placeholder",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/placeholder/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:swc",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/api/plugin-api",
-        "main": "libs/api/plugin-api/src/index.ts",
-        "tsConfig": "libs/api/plugin-api/tsconfig.lib.json",
-        "assets": ["libs/api/plugin-api/*.md"]
+        "outputPath": "dist/libs/placeholder",
+        "main": "libs/placeholder/src/index.ts",
+        "tsConfig": "libs/placeholder/tsconfig.lib.json",
+        "assets": ["libs/placeholder/*.md"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/api/plugin-api/**/*.ts"]
+        "lintFilePatterns": ["libs/placeholder/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/api/plugin-api/jest.config.ts",
+        "jestConfig": "libs/placeholder/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

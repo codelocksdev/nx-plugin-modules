@@ -1,6 +1,5 @@
 import { setRemoteDefinitions } from '@proof/load-remote-module';
 import '../module-federation.config';
-import fedConfig from 'module-federation-config';
 import('./bootstrap');
 
 fetch('/assets/module-federation.manifest.json')
