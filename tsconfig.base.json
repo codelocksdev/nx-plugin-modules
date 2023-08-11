@@ -15,9 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-plugin-modules/api/plugin-api": ["libs/api/plugin-api/src/index.ts"],
+      "@nx-plugin-modules/placeholder": ["libs/placeholder/src/index.ts"],
       "@proof/api": ["packages/api/src/index.ts"],
       "@proof/load-remote-module": ["libs/load-remote-module/src/index.ts"],
+      "@proof/plugin-api": ["libs/api/plugin-api/src/index.ts"],
       "@proof/types": ["libs/types/src/index.ts"]
     }
   },

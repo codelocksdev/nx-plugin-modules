@@ -1,2 +1,1 @@
-export * from './lib/Types';
-export * from './lib/PluginMetadata';
+export * from './lib/types';
